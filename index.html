@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zero-shot text-to-speech synthesis conditioned by self-supervised speech-representation model</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<header>
+	<h1 class="head-1">
+		<a>Zero-shot text-to-speech synthesis conditioned <br> by self-supervised speech-representation model</a>
+	</h1>	
+	<h2 class="head-2">
+		<a>Kenichi Fujita, Takanori Ashihara, Hiroki Kanagawa, Takafumi Moriya, Yusuke Ijima<br>NTT</a>
+	</h2>	
+
+</header>
+<body>
+  <h2 class="style-1">Samples</h2>
+  <ul>
+	<li>HiFi-GAN was used for all speech samples generation.</li>
+	<li>All speakers in this page are chosen from test data.</li>
+  </ul>
+  <p></p>
+  <h3 class="style-1">Performance comparison on zero-shot TTS (Section 4.2)</h3>
+  <ul>
+	<li>Conventional method: separately conditioned x-vector</li>
+	<li>Proposed method: separately conditioned HuBERT (LSTM)</li>
+	<li>"Original" in table is the target speaker's speech with the same speech contents for the generated speech in non-parallel condition. Note that this is not the reference speech.</li>
+  </ul>
+  <p></p>
+  <p></p>
+  <p></p>
+<table>
+	<tbody>
+		<tr>
+			<td rowspan="2"></td>
+			<td rowspan="2" style="text-align:center">Reference speech</td>
+			<td colspan="2" style="text-align:center">parallel</td>
+			<td colspan="3" style="text-align:center">non-parallel</td>
+
+		</tr>
+		<tr>
+			<td style="text-align:center">x-vector (sep)</td>
+			<td style="text-align:center">HuBERT (sep, LSTM)</td>
+			<td style="text-align:center">x-vector (sep)</td>
+			<td style="text-align:center">HuBERT (sep, LSTM)</td>
+			<td style="text-align:center">original</td>			
+		</tr>
+		<tr>
+			<td style="text-align:center">Female child</td>
+			<td><audio src="./F10003_ref.wav" controls></audio></td>
+			<td><audio src="./F10003_p_x.wav" controls></td>
+			<td><audio src="./F10003_p_ssl.wav" controls></td>
+			<td><audio src="./F10003_np_x.wav" controls></td>
+			<td><audio src="./F10003_np_ssl.wav" controls></td>
+			<td><audio src="./F10003_np_ref.wav" controls></td>				
+		</tr>
+		<tr>
+			<td style="text-align:center">Male child</td>
+			<td><audio src="./M10004_ref.wav" controls></audio></td>
+			<td><audio src="./M10004_p_x.wav" controls></td>
+			<td><audio src="./M10004_p_ssl.wav" controls></td>
+			<td><audio src="./M10004_np_x.wav" controls></td>
+			<td><audio src="./M10004_np_ssl.wav" controls></td>
+			<td><audio src="./M10004_np_ref.wav" controls></td>								
+		</tr>
+		<tr>
+			<td style="text-align:center">Female adult</td>
+			<td><audio src="./F2003_ref.wav" controls></audio></td>
+			<td><audio src="./F2003_p_x.wav" controls></td>
+			<td><audio src="./F2003_p_ssl.wav" controls></td>
+			<td><audio src="./F2003_np_x.wav" controls></td>
+			<td><audio src="./F2003_np_ssl.wav" controls></td>
+			<td><audio src="./F2003_np_ref.wav" controls></td>							
+		</tr>
+		<tr>
+			<td style="text-align:center">Male adult</td>
+			<td><audio src="./M40005_ref.wav" controls></audio></td>
+			<td><audio src="./M40005_p_x.wav" controls></td>
+			<td><audio src="./M40005_p_ssl.wav" controls></td>
+			<td><audio src="./M40005_np_x.wav" controls></td>
+			<td><audio src="./M40005_np_ssl.wav" controls></td>
+			<td><audio src="./M40005_np_ref.wav" controls></td>								
+		</tr>
+		<tr>
+			<td style="text-align:center">Female actor</td>
+			<td><audio src="./FA_ref.wav" controls></audio></td>
+			<td><audio src="./FA_p_x.wav" controls></td>
+			<td><audio src="./FA_p_ssl.wav" controls></td>
+			<td><audio src="./FA_np_x.wav" controls></td>
+			<td><audio src="./FA_np_ssl.wav" controls></td>
+			<td><audio src="./FA_np_ref.wav" controls></td>									
+		</tr>
+		<tr>
+			<td style="text-align:center">Male actor</td>
+			<td><audio src="./MYS_ref.wav" controls></audio></td>
+			<td><audio src="./MYS_p_x.wav" controls></td>
+			<td><audio src="./MYS_p_ssl.wav" controls></td>
+			<td><audio src="./MYS_np_x.wav" controls></td>
+			<td><audio src="./MYS_np_ssl.wav" controls></audio></td>
+			<td><audio src="./MYS_np_ref.wav" controls></td>							
+		</tr>
+	</tbody>
+</table>
+  <h3 class="style-1">Performance comparison on speech rhythm transfer (Section 4.3)</h3>
+  <ul>
+	<li>Speech samples for section 4.3.</li>
+	<li>The reference speech from Female1 and Female2 were used for conditioning spectrogram and duration respectively.</li>
+	<li>Please confirm that the proposed method can synthesize speech whose speech rhythm is close to that of the reference speech for duration while maintaining voice quality of the reference speech for spectrogram. </li>
+  </ul>
+<p></p>
+<h4 class="style-1">Speech rhythm transfer with x-vector</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td colspan="2" rowspan="2"></td>
+				<td colspan="2"style="text-align:center">Reference speech for duration</td>
+			</tr>
+			<tr>
+				<td colspan="1">Female1<br><audio src="./F2004_ref.wav" controls></audio></td>
+				<td colspan="1">Female2<br><audio src="./FTS_ref.wav" controls></audio></td>
+			</tr>
+
+			<tr>
+				<td rowspan="2"style="text-align:center">Reference speech for melspectrogram</dr></td>
+				<td>Female1<audio src="./F2004_ref.wav" controls></audio></td>
+				<td><audio src="./xvec_F2004-F2004.wav" controls></audio></td>
+				<td><audio src="./xvec_F2004-FTS.wav" controls></audio></td>
+			</tr>
+			<tr>
+				<td>Female2<audio src="./FTS_ref.wav" controls></audio></td>
+				<td><audio src="./xvec_FTS-F2004.wav" controls></audio></td>
+				<td><audio src="./xvec_FTS-FTS.wav" controls></audio></td>
+			</tr>
+		</tbody>
+	</table>
+	<h4 class="style-1">Speech rhythm transfer with proposed method (HuBERT (separate, LSTM))</h3>
+		<table>
+			<tbody>
+				<tr>
+					<td colspan="2" rowspan="2"></td>
+					<td colspan="2"style="text-align:center">Reference speech for duration</td>
+				</tr>
+				<tr>
+					<td>Female1<audio src="./F2004_ref.wav" controls></audio></td>
+					<td>Female2<audio src="./FTS_ref.wav" controls></audio></td>
+				</tr>
+				<tr>
+					<td rowspan="2"style="text-align:center">Reference speech for melspectrogram</be></td>
+					<td>Female1<audio src="./F2004_ref.wav" controls></audio></td>
+					<td><audio src="./ssl_F2004-F2004.wav" controls></audio></td>
+					<td><audio src="./ssl_F2004-FTS.wav" controls></audio></td>
+				</tr>
+				<tr>
+					<td>Female2<audio src="./FTS_ref.wav" controls></audio></td>
+					<td><audio src="./ssl_FTS-F2004.wav" controls></audio></td>
+					<td><audio src="./ssl_FTS-FTS.wav" controls></audio></td>
+				</tr>
+			</tbody>
+		</table>
+			
+
+</body>
+
+
+</html>
